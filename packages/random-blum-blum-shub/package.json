@@ -1,0 +1,32 @@
+{
+  "name": "@xethya/random-blum-blum-shub",
+  "version": "0.0.1",
+  "description": "An implementation of the BlumBlumShub pseudo-random number generator.",
+  "main": "dist/index.js",
+  "repository": "https://github.com/xethya/framework",
+  "author": "Joel A. Villarreal Bertoldi",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^23.3.3",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.4",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "jest --runInBand --detectOpenHandles --bail --forceExit",
+    "test:coverage": "jest --runInBand --detectOpenHandles --bail --forceExit --coverage"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!**/index.ts",
+      "!**/errors.ts"
+    ]
+  },
+  "dependencies": {
+    "@xethya/random-core": "*"
+  }
+}

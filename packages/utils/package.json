@@ -1,0 +1,38 @@
+{
+  "name": "@xethya/utils",
+  "shortName": "utils",
+  "version": "0.0.1",
+  "description": "Common tools and functions used throughout the Xethya framework.",
+  "main": "dist/xethya.utils.js",
+  "module": "dist/xethya.utils.es.js",
+  "iife": "dist/xethya.utils.iife.js",
+  "repository": "https://github.com/xethya/framework",
+  "author": "Joel A. Villarreal Bertoldi",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^23.3.3",
+    "jest": "^23.6.0",
+    "rollup": "^0.67.3",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-typescript2": "^0.18.0",
+    "ts-jest": "^23.10.4",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1"
+  },
+  "scripts": {
+    "build": "tsc -b && rollup -c",
+    "test": "jest --runInBand --detectOpenHandles --bail --forceExit",
+    "test:coverage": "jest --runInBand --detectOpenHandles --bail --forceExit --coverage"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!**/index.ts",
+      "!**/errors.ts"
+    ]
+  },
+  "dependencies": {
+    "eventemitter3": "^3.1.0"
+  }
+}

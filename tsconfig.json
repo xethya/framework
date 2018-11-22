@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es2015",
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "removeComments": false,
+    "preserveSymlinks": true,
+    "lib": [
+      "es2015",
+      "esnext.array",
+      "es2016.array.include"
+    ],
+    "baseUrl": "./packages",
+    "paths": {
+      "@xethya/*": ["./*/src"]
+    }
+  }
+}

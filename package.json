@@ -1,0 +1,20 @@
+{
+  "name": "xethya",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "test": "lerna run test"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.3",
+    "@types/node": "^10.12.9",
+    "jest": "^23.6.0",
+    "lerna": "^3.4.1",
+    "ts-jest": "^23.10.4",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1"
+  }
+}
