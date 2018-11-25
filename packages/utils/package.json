@@ -1,7 +1,7 @@
 {
   "name": "@xethya/utils",
   "shortName": "utils",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Common tools and functions used throughout the Xethya framework.",
   "main": "dist/xethya.utils.js",
   "module": "dist/xethya.utils.es.js",

@@ -1,7 +1,7 @@
 {
   "name": "@xethya/dice",
   "shortName": "dice",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/xethya.dice.js",
   "module": "dist/xethya.dice.es.js",
@@ -17,9 +17,9 @@
     "typescript": "^3.1.1"
   },
   "dependencies": {
-    "@xethya/random-core": "^0.0.1",
-    "@xethya/random-blum-blum-shub": "^0.0.1",
-    "@xethya/utils": "^0.0.1",
+    "@xethya/random-blum-blum-shub": "^0.1.0",
+    "@xethya/random-core": "^0.1.0",
+    "@xethya/utils": "^0.1.0",
     "eventemitter3": "^3.1.0"
   },
   "peerDependencies": {

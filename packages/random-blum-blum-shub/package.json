@@ -1,7 +1,7 @@
 {
   "name": "@xethya/random-blum-blum-shub",
   "shortName": "random.BlumBlumShub",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "An implementation of the BlumBlumShub pseudo-random number generator.",
   "main": "dist/xethya.random.blum-blum-shub.js",
   "module": "dist/xethya.random.blum-blum-shub.es.js",
@@ -10,11 +10,11 @@
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^23.3.3",
+    "jest": "^23.6.0",
     "rollup": "^0.67.3",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-typescript2": "^0.18.0",
-    "@types/jest": "^23.3.3",
-    "jest": "^23.6.0",
     "ts-jest": "^23.10.4",
     "tslint": "^5.11.0",
     "typescript": "^3.1.1"
@@ -33,6 +33,6 @@
     ]
   },
   "dependencies": {
-    "@xethya/random-core": "^0.0.1"
+    "@xethya/random-core": "^0.1.0"
   }
 }

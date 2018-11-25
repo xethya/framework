@@ -1,7 +1,7 @@
 {
   "name": "@xethya/random-core",
   "shortName": "random.core",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/xethya.random-core.js",
   "module": "dist/xethya.random-core.es.js",

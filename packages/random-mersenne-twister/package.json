@@ -1,7 +1,7 @@
 {
   "name": "@xethya/random-mersenne-twister",
   "shortName": "random.MersenneTwister",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/xethya.mersenne-twister.js",
   "module": "dist/xethya.mersenne-twister.es.js",
@@ -17,8 +17,8 @@
     "typescript": "^3.1.1"
   },
   "dependencies": {
-    "@xethya/utils": "^0.0.1",
-    "@xethya/random-core": "^0.0.1"
+    "@xethya/random-core": "^0.1.0",
+    "@xethya/utils": "^0.1.0"
   },
   "scripts": {
     "build": "tsc -b && rollup -c",
