@@ -43,9 +43,9 @@ export interface IBlumBlumShubAlgorithmSettings {
  * Instantiates a Blum Blum Shub PRNG.
  *
  * @public
- * @class BlumBlumShubAlgorithm
+ * @class BlumBlumShub
  */
-export default class BlumBlumShubAlgorithm implements IPseudoRandomNumberGenerator {
+export default class BlumBlumShub implements IPseudoRandomNumberGenerator {
   readonly seedNumber: number;
   M: number;
   P: number;
@@ -65,7 +65,6 @@ export default class BlumBlumShubAlgorithm implements IPseudoRandomNumberGenerat
     const defaults = {
       p: P,
       q: Q,
-      seedNumber: null,
     };
 
     this.settings = Object.assign({}, defaults, settings);

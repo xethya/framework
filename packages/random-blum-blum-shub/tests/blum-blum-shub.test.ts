@@ -1,5 +1,5 @@
-import { DefaultSeeds, P, Q } from '../src//blum-blum-shub';
-import BlumBlumShub from '../src//blum-blum-shub';
+import { DefaultSeeds, P, Q } from '../src/blum-blum-shub';
+import BlumBlumShub from '../src/blum-blum-shub';
 
 const p = 246721;
 const q = 137181;

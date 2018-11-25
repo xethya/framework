@@ -1,8 +1,11 @@
 {
   "name": "@xethya/random-core",
+  "shortName": "random.core",
   "version": "0.0.1",
-  "description": "Core utilities for any randomizer implementation.",
-  "main": "dist/index.js",
+  "description": "",
+  "main": "dist/xethya.random-core.js",
+  "module": "dist/xethya.random-core.es.js",
+  "iife": "dist/xethya.random-core.iife.js",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
@@ -14,9 +17,9 @@
     "typescript": "^3.1.1"
   },
   "scripts": {
-    "build": "tsc -b",
-    "test": "jest --runInBand --detectOpenHandles --bail --forceExit",
-    "test:coverage": "jest --runInBand --detectOpenHandles --bail --forceExit --coverage"
+    "build": "tsc -b && rollup -c",
+    "test": "#jest --runInBand --detectOpenHandles --bail --forceExit",
+    "test:coverage": "#jest --runInBand --detectOpenHandles --bail --forceExit --coverage"
   },
   "jest": {
     "preset": "ts-jest",

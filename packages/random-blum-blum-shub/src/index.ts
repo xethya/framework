@@ -1,3 +1,5 @@
-import BlumBlumShubAlgorithm from './blum-blum-shub';
+import BlumBlumShub from './blum-blum-shub';
 
-export default BlumBlumShubAlgorithm;
+export default BlumBlumShub;
+
+export { BlumBlumShub };

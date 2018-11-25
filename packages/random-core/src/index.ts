@@ -1,5 +1,1 @@
-import { IPseudoRandomNumberGenerator } from './types';
-
-export {
-  IPseudoRandomNumberGenerator,
-};
+export * from './types';
