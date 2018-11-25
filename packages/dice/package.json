@@ -1,0 +1,41 @@
+{
+  "name": "@xethya/dice",
+  "shortName": "dice",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/xethya.dice.js",
+  "module": "dist/xethya.dice.es.js",
+  "iife": "dist/xethya.dice.iife.js",
+  "repository": "https://github.com/xethya/framework",
+  "author": "Joel A. Villarreal Bertoldi",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^23.3.3",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.4",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1"
+  },
+  "dependencies": {
+    "@xethya/random-core": "^0.0.1",
+    "@xethya/random-blum-blum-shub": "^0.0.1",
+    "@xethya/utils": "^0.0.1",
+    "eventemitter3": "^3.1.0"
+  },
+  "peerDependencies": {
+    "@xethya/random-mersenne-twister": "^0.0.1"
+  },
+  "scripts": {
+    "build": "tsc -b && rollup -c",
+    "test": "jest --runInBand --detectOpenHandles --bail --forceExit",
+    "test:coverage": "jest --runInBand --detectOpenHandles --bail --forceExit --coverage"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!**/index.ts",
+      "!**/errors.ts"
+    ]
+  }
+}
