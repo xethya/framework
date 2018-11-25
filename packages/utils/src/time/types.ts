@@ -36,7 +36,7 @@ export interface ICountdown extends ITimeUnits {
   resumeCountdown(): void;
   tick(): void;
 
-  onBegin(callback: ListenerFn);
-  onTick(callback: CountdownEventCallback);
-  onEnd(callback: ListenerFn);
+  onBegin(callback: ListenerFn): void;
+  onTick(callback: CountdownEventCallback): void;
+  onEnd(callback: ListenerFn): void;
 }

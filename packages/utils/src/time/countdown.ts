@@ -1,4 +1,4 @@
-import * as EventEmitter from 'eventemitter3';
+import EventEmitter from 'eventemitter3';
 import TimeInterval from './time-interval';
 import { CountdownEventCallback, ICountdown } from './types';
 
