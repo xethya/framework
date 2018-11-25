@@ -11,6 +11,7 @@ import {
   D8,
 } from './presets';
 import * as presetDice from './presets';
+import { DiceThrowTypes } from './types';
 
 export {
   Die,
@@ -25,4 +26,5 @@ export {
   D4,
   D6,
   D8,
+  DiceThrowTypes,
 };
