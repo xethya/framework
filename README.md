@@ -2,7 +2,9 @@
 
 # Xethya
 A role-playing game mechanics framework, built in TypeScript.
-
+<br>
+<br>
+<br>
 ## What is Xethya?
 Xethya is a game development framework, focused primarily on game mechanics, such as character management, combat simulations, dice rolling, and pretty much any interaction you need to manage during a role-playing game.
 
