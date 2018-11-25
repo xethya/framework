@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist",
     "target": "es2015",
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "removeComments": false,
     "preserveSymlinks": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "es2015",
       "esnext.array",
@@ -13,7 +18,7 @@
     ],
     "baseUrl": "./packages",
     "paths": {
-      "@xethya/*": ["./*/src"]
+      "@xethya/*": ["./*/src/index.ts"]
     }
   }
 }

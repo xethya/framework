@@ -3,4 +3,4 @@ jest-cache
 coverage
 *.log
 .rpt2_cache
-/dist
+**/dist/*

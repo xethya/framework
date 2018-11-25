@@ -6,7 +6,8 @@
   ],
   "scripts": {
     "build": "lerna run build",
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "package:create": "node tools/package-create"
   },
   "devDependencies": {
     "@types/jest": "^23.3.3",
