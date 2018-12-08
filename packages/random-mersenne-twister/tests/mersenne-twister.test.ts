@@ -1,4 +1,4 @@
-import { MersenneTwister, N } from '../src/mersenne-twister';
+import MersenneTwister, { N } from '../src/mersenne-twister';
 
 describe('Random.MersenneTwister', () => {
 
