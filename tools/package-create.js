@@ -17,6 +17,15 @@ optionsArray.forEach(option => {
   options[name] = value;
 });
 
+if (packageName === '--help') {
+  console.log("Usage: yarn package:create <packageName> [parameters]");
+  console.log("");
+  console.log("  --rollup       includes Rollup dependencies to transpile")
+  console.log("  --shortName    namespace in Xethya's IIFE (use with --rollup)")
+  console.log("  --moduleName   used to build the file name (xethya.moduleName.js, use with --rollup)")
+  process.exit();
+}
+
 const templatePackageJson = `
 {
   "name": "@xethya/${packageName}",
@@ -130,7 +139,7 @@ fs.writeFileSync(`${basePath}/tsconfig.json`, templateTsconfigJson);
 fs.writeFileSync(`${basePath}/tslint.json`, templateTslintJson);
 
 if (options.rollup) {
-  console.log('Writing Rollup configuratoin...');
+  console.log('Writing Rollup configuration...');
   fs.writeFileSync(`${basePath}/rollup.config.js`, templateRollupConfig);
 }
 
