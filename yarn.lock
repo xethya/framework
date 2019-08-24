@@ -1218,6 +1218,11 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@xethya/definitions@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@xethya/definitions/-/definitions-0.0.2.tgz#f6623080779c6afd5a7c0fc756453eeb9265f026"
+  integrity sha512-QFuf1PpZHldshuvv+SxSFqdCu8a4Hl+QMM23oH8pkNyycx4a0uLq3dcTfKRiZQGzI4nzswpdrb58yoxqVDy3ow==
+
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-3.1.0.tgz#2ab8ed81f5bb5452a85f25758eb9b8681982fd2e"
