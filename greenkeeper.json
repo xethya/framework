@@ -1,0 +1,16 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/ability/package.json",
+        "packages/dice/package.json",
+        "packages/gamebook-dnd-5e/package.json",
+        "packages/random-blum-blum-shub/package.json",
+        "packages/random-core/package.json",
+        "packages/random-mersenne-twister/package.json",
+        "packages/utils/package.json"
+      ]
+    }
+  }
+}
