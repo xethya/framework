@@ -10,12 +10,12 @@
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^23.3.3",
-    "jest": "^23.6.0",
-    "rollup": "^0.67.3",
-    "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-typescript2": "^0.18.0",
-    "ts-jest": "^23.10.4",
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "rollup": "^1.20.1",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-typescript2": "^0.23.0",
+    "ts-jest": "^24.0.2",
     "tslint": "^5.11.0",
     "typescript": "^3.1.1"
   },
@@ -33,6 +33,6 @@
     ]
   },
   "dependencies": {
-    "eventemitter3": "^3.1.0"
+    "eventemitter3": "^4.0.0"
   }
 }
