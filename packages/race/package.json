@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "tsc -b && rollup -c",
+    "pretest": "tsc -b",
     "test": "jest --runInBand --detectOpenHandles --bail --forceExit",
     "test:coverage": "jest --runInBand --detectOpenHandles --bail --forceExit --coverage"
   },
