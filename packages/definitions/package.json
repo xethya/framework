@@ -1,7 +1,7 @@
 {
   "name": "@xethya/definitions",
   "shortName": "definitions",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/xethya.definitions.js",
   "module": "dist/xethya.definitions.es.js",
