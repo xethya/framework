@@ -71,7 +71,7 @@ export class Race {
    *
    * @todo Implement a better type for this.
    */
-  public readonly languages: string[] = ["common"];
+  public readonly languages: string[] = [];
 
   /**
    * Some races have subraces. Members of a subrace have the traits of the parent race in addition to the traits
@@ -90,7 +90,7 @@ export class Race {
       this.speed = this.speed;
     }
 
-    if (!this.age) {
+    if (options.age) {
       this.age = options.age;
     }
 
@@ -102,7 +102,7 @@ export class Race {
       this.size = options.size;
     }
 
-    if (!this.speed) {
+    if (options.speed) {
       this.speed = options.speed;
     }
 
