@@ -1,7 +1,7 @@
 {
   "name": "@xethya/dice",
   "shortName": "dice",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "dist/xethya.dice.js",
   "module": "dist/xethya.dice.es.js",
