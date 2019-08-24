@@ -32,6 +32,9 @@
       "!**/errors.ts"
     ]
   },
+  "transformIgnorePatterns": [
+    "/node_modules/[^@xethya]/"
+  ],
   "dependencies": {
     "eventemitter3": "^4.0.0"
   }
