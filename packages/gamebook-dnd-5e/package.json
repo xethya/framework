@@ -1,7 +1,7 @@
 {
   "name": "@xethya/gamebook-dnd-5e",
   "shortName": "gamebooks.dnd5e",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/xethya.gamebook-dnd-5e.js",
   "module": "dist/xethya.gamebook-dnd-5e.es.js",
@@ -33,6 +33,6 @@
     ]
   },
   "dependencies": {
-    "@xethya/ability": "^0.0.2"
+    "@xethya/ability": "^0.0.3"
   }
 }
