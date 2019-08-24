@@ -7,7 +7,8 @@
     "member-ordering": false,
     "member-access": false,
     "no-bitwise": false,
-    "interface-over-type-literal": false
+    "interface-over-type-literal": false,
+    "object-literal-sort-keys": false
   },
   "rulesDirectory": []
 }
