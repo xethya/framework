@@ -6,7 +6,8 @@
     "quotemark": false,
     "member-ordering": false,
     "member-access": false,
-    "no-bitwise": false
+    "no-bitwise": false,
+    "interface-over-type-literal": false
   },
   "rulesDirectory": []
 }
