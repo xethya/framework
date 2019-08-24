@@ -58,6 +58,9 @@ const templatePackageJson = `
       "src/**/*.ts",
       "!**/index.ts",
       "!**/errors.ts"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/[^@xethya]/"
     ]
   }
 }
