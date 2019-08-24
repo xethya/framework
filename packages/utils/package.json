@@ -1,7 +1,7 @@
 {
   "name": "@xethya/utils",
   "shortName": "utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Common tools and functions used throughout the Xethya framework.",
   "main": "dist/xethya.utils.js",
   "module": "dist/xethya.utils.es.js",
@@ -16,8 +16,8 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-typescript2": "^0.23.0",
     "ts-jest": "^24.0.2",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.1"
+    "tslint": "^5.19.0",
+    "typescript": "^3.5.3"
   },
   "scripts": {
     "build": "tsc -b && rollup -c",
