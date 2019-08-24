@@ -19,6 +19,7 @@
   "scripts": {
     "build": "tsc -b && rollup -c",
     "pretest": "tsc -b",
+    "prepublishOnly": "yarn build",
     "test": "jest --runInBand --detectOpenHandles --bail --forceExit",
     "test:coverage": "jest --runInBand --detectOpenHandles --bail --forceExit --coverage"
   },
