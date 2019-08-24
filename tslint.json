@@ -1,13 +1,12 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
-    "jsRules": {},
-    "rules": {
-      "quotemark": false,
-      "member-ordering": false,
-      "member-access": false
-    },
-    "rulesDirectory": []
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "jsRules": {},
+  "rules": {
+    "quotemark": false,
+    "member-ordering": false,
+    "member-access": false,
+    "no-bitwise": false
+  },
+  "rulesDirectory": []
 }
