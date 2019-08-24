@@ -1,0 +1,37 @@
+{
+  "name": "@xethya/race",
+  "shortName": "race",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/xethya.race.js",
+  "module": "dist/xethya.race.es.js",
+  "iife": "dist/xethya.race.iife.js",
+  "repository": "https://github.com/xethya/framework",
+  "author": "Joel A. Villarreal Bertoldi",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.19.0",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "build": "tsc -b && rollup -c",
+    "pretest": "tsc -b",
+    "prepublishOnly": "yarn build",
+    "test": "jest --runInBand --detectOpenHandles --bail --forceExit",
+    "test:coverage": "jest --runInBand --detectOpenHandles --bail --forceExit --coverage"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!**/index.ts",
+      "!**/errors.ts"
+    ]
+  },
+  "dependencies": {
+    "@xethya/definitions": "^0.0.4"
+  }
+}
