@@ -1,7 +1,7 @@
 {
   "name": "@xethya/ability",
   "shortName": "ability",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/xethya.ability.js",
   "module": "dist/xethya.ability.es.js",
@@ -27,6 +27,9 @@
       "src/**/*.ts",
       "!**/index.ts",
       "!**/errors.ts"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/[^@xethya]/"
     ]
   }
 }

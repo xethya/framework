@@ -1,7 +1,7 @@
 {
   "name": "@xethya/utils",
   "shortName": "utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Common tools and functions used throughout the Xethya framework.",
   "main": "dist/xethya.utils.js",
   "module": "dist/xethya.utils.es.js",
@@ -32,6 +32,9 @@
       "!**/errors.ts"
     ]
   },
+  "transformIgnorePatterns": [
+    "/node_modules/[^@xethya]/"
+  ],
   "dependencies": {
     "eventemitter3": "^4.0.0"
   }
