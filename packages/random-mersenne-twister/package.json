@@ -17,8 +17,8 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@xethya/random-core": "^0.1.0",
-    "@xethya/utils": "^0.1.0"
+    "@xethya/random-core": "^0.1.1",
+    "@xethya/utils": "^0.1.1"
   },
   "scripts": {
     "build": "tsc -b && rollup -c",

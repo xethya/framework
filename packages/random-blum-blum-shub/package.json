@@ -33,6 +33,6 @@
     ]
   },
   "dependencies": {
-    "@xethya/random-core": "^0.1.0"
+    "@xethya/random-core": "^0.1.1"
   }
 }

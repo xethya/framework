@@ -17,9 +17,9 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@xethya/random-blum-blum-shub": "^0.1.0",
-    "@xethya/random-core": "^0.1.0",
-    "@xethya/utils": "^0.1.0",
+    "@xethya/random-blum-blum-shub": "^0.1.1",
+    "@xethya/random-core": "^0.1.1",
+    "@xethya/utils": "^0.1.1",
     "eventemitter3": "^4.0.0"
   },
   "scripts": {
