@@ -1,8 +1,11 @@
 {
   "name": "@xethya/definitions",
+  "shortName": "definitions",
   "version": "0.0.3",
-  "main": "src/index.ts",
   "description": "",
+  "main": "dist/xethya.definitions.js",
+  "module": "dist/xethya.definitions.es.js",
+  "iife": "dist/xethya.definitions.iife.js",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
@@ -14,8 +17,7 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
-    "build": "tsc -b",
-    "prepublishOnly": "yarn build",
+    "build": "tsc -b && rollup -c",
     "test": "echo 'No tests apply.'",
     "test:coverage": "echo 'No tests apply.'"
   },
