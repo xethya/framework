@@ -1,52 +1,54 @@
-const path = require('path');
-const fs = require('fs');
-const shell = require('child_process');
+const path = require("path");
+const fs = require("fs");
+const shell = require("child_process");
 
 const [, , packageName, ...optionsArray] = process.argv;
 
 const options = {};
 
 optionsArray.forEach(option => {
-  let [name, value] = option.split('=');
+  let [name, value] = option.split("=");
   if (value === undefined) {
     value = true;
-  } else if (value === 'false') {
+  } else if (value === "false") {
     value = false;
   }
-  name = name.replace('--', '');
+  name = name.replace("--", "");
   options[name] = value;
 });
 
-if (packageName === '--help') {
+if (packageName === "--help" || !packageName) {
   console.log("Usage: yarn package:create <packageName> [parameters]");
   console.log("");
-  console.log("  --rollup       includes Rollup dependencies to transpile")
-  console.log("  --shortName    namespace in Xethya's IIFE (use with --rollup)")
-  console.log("  --moduleName   used to build the file name (xethya.moduleName.js, use with --rollup)")
+  console.log("  --rollup       includes Rollup dependencies to transpile");
+  console.log("  --shortName    namespace in Xethya's IIFE (use with --rollup)");
+  console.log("  --moduleName   used to build the file name (xethya.moduleName.js, use with --rollup)");
   process.exit();
 }
+
+const monorepoPackageJson = require(path.resolve("./package.json"));
 
 const templatePackageJson = `
 {
   "name": "@xethya/${packageName}",
-  ${options.rollup ? '"shortName": "' + options.shortName + '",' : ''}
+  ${options.rollup ? '"shortName": "' + options.shortName + '",' : ""}
   "version": "0.0.1",
   "description": "",
-  ${options.rollup ? '"main": "dist/xethya.' + options.moduleName + '.js",' : ''}
-  ${options.rollup ? '"module": "dist/xethya.' + options.moduleName + '.es.js",' : ''}
-  ${options.rollup ? '"iife": "dist/xethya.' + options.moduleName + '.iife.js",' : ''}
+  ${options.rollup ? '"main": "dist/xethya.' + options.moduleName + '.js",' : ""}
+  ${options.rollup ? '"module": "dist/xethya.' + options.moduleName + '.es.js",' : ""}
+  ${options.rollup ? '"iife": "dist/xethya.' + options.moduleName + '.iife.js",' : ""}
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^23.3.3",
-    "jest": "^23.6.0",
-    "ts-jest": "^23.10.4",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.1"
+    "@types/jest": "${monorepoPackageJson.devDependencies["@types/jest"]}",
+    "jest": "${monorepoPackageJson.devDependencies["jest"]}",
+    "ts-jest": "${monorepoPackageJson.devDependencies["ts-jest"]}",
+    "tslint": "${monorepoPackageJson.devDependencies["tslint"]}",
+    "typescript": "${monorepoPackageJson.devDependencies["typescript"]}"
   },
   "scripts": {
-    "build": "tsc -b${options.rollup ? ' && rollup -c' : ''}",
+    "build": "tsc -b${options.rollup ? " && rollup -c" : ""}",
     "test": "jest --runInBand --detectOpenHandles --bail --forceExit",
     "test:coverage": "jest --runInBand --detectOpenHandles --bail --forceExit --coverage"
   },
@@ -121,39 +123,39 @@ const templateTslintJson = `
 }
 `.trim();
 
-console.log('Creating: ', packageName);
-console.log('Options: ', options);
+console.log("Creating: ", packageName);
+console.log("Options: ", options);
 
 const basePath = path.resolve(`./packages/${packageName}`);
 
-console.log('Creating skeleton directories in: ', basePath);
+console.log("Creating skeleton directories in: ", basePath);
 
 fs.mkdirSync(basePath);
 fs.mkdirSync(`${basePath}/src`);
 fs.mkdirSync(`${basePath}/tests`);
 
-console.log('Writing package and linting configuration...');
+console.log("Writing package and linting configuration...");
 
 fs.writeFileSync(`${basePath}/package.json`, templatePackageJson);
 fs.writeFileSync(`${basePath}/tsconfig.json`, templateTsconfigJson);
 fs.writeFileSync(`${basePath}/tslint.json`, templateTslintJson);
 
 if (options.rollup) {
-  console.log('Writing Rollup configuration...');
+  console.log("Writing Rollup configuration...");
   fs.writeFileSync(`${basePath}/rollup.config.js`, templateRollupConfig);
 }
 
 process.chdir(basePath);
 
-console.log('Installing dependencies...');
+console.log("Installing dependencies...");
 
-const yarnExecution = shell.exec('yarn');
-yarnExecution.stdout.on('data', (data) => {
+const yarnExecution = shell.exec("yarn");
+yarnExecution.stdout.on("data", data => {
   console.log(data);
 });
-yarnExecution.stderr.on('data', (data) => {
+yarnExecution.stderr.on("data", data => {
   console.error(data);
 });
-yarnExecution.on('exit', () => {
-  console.log('Ready!');
+yarnExecution.on("exit", () => {
+  console.log("Ready!");
 });
