@@ -1,0 +1,23 @@
+{
+  "name": "@xethya/definitions",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "https://github.com/xethya/framework",
+  "author": "Joel A. Villarreal Bertoldi",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.19.0",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "echo 'No tests apply.'",
+    "test:coverage": "echo 'No tests apply.'"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  }
+}
