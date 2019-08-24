@@ -28,12 +28,9 @@
       "src/**/*.ts",
       "!**/index.ts",
       "!**/errors.ts"
-    ],
-    "transformIgnorePatterns": [
-      "/node_modules/[^@xethya]/"
     ]
   },
   "dependencies": {
-    "@xethya/definitions": "^0.0.2"
+    "@xethya/definitions": "^0.0.4"
   }
 }
