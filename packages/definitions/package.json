@@ -1,6 +1,7 @@
 {
   "name": "@xethya/definitions",
   "version": "0.0.1",
+  "main": "src/index.ts",
   "description": "",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
@@ -14,6 +15,7 @@
   },
   "scripts": {
     "build": "tsc -b",
+    "prepublishOnly": "yarn build",
     "test": "echo 'No tests apply.'",
     "test:coverage": "echo 'No tests apply.'"
   },
