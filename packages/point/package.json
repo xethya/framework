@@ -34,7 +34,7 @@
     ]
   },
   "dependencies": {
-    "@xethya/utils": "^0.1.2",
+    "@xethya/utils": "^0.1.4",
     "typescript-memoize": "^1.0.0-alpha.3",
     "uuid": "^3.3.3"
   }
