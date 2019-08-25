@@ -118,8 +118,19 @@ export class Point {
    */
   protected readonly temporaryModifiers: Collection<Modifier>;
 
+  /**
+   * Stores the latest score calculation.
+   */
   protected lastScore: number = 0;
+
+  /**
+   * Stores the latest boost or drop registered.
+   */
   protected lastModifier: Modifier;
+
+  /**
+   * Stores the amount of boosts or drops registered so far.
+   */
   protected lastModifierCount: number = 0;
 
   /**
@@ -158,21 +169,34 @@ export class Point {
     this.temporaryModifiers.onRemove(this.decreaseModifierCount.bind(this));
   }
 
-  protected increaseModifierCount(_: Collection<Modifier>, modifier: Modifier) {
+  /**
+   * Used to update how many modifiers have been registered so far.
+   * Triggers after adding either a temporary or permanent modifier.
+   */
+  protected increaseModifierCount() {
     this.lastModifierCount += 1;
   }
 
-  protected decreaseModifierCount(_: Collection<Modifier>, modifier: Modifier) {
+  /**
+   * Used to update how many modifiers have been registered so far.
+   * Triggers after removing a temporary modifier.
+   */
+  protected decreaseModifierCount() {
     this.lastModifierCount -= 1;
   }
 
+  /**
+   * Updates the score counter with the latest boost or drop that was added or removed.
+   *
+   * @param collection The list of modifiers being affected.
+   */
   protected updateLastScore(collection: Collection<Modifier>) {
     let factor = this.lastModifier.factor;
+    const isTemporaryModifier = collection === this.temporaryModifiers;
+    const isRemovingModifier =
+      this.lastModifierCount - 1 === this.permanentModifiers.count + this.temporaryModifiers.count;
 
-    if (
-      collection === this.temporaryModifiers &&
-      this.lastModifierCount - 1 === this.permanentModifiers.count + this.temporaryModifiers.count
-    ) {
+    if (isTemporaryModifier && isRemovingModifier) {
       factor = -factor;
     }
 
