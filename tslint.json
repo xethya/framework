@@ -8,7 +8,8 @@
     "member-access": false,
     "no-bitwise": false,
     "interface-over-type-literal": false,
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "arrow-parens": false
   },
   "rulesDirectory": []
 }
