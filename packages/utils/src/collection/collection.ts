@@ -1,14 +1,14 @@
-import EventEmitter from 'eventemitter3';
-import assert from '../assert';
+import EventEmitter from "eventemitter3";
+import assert from "../assert";
 import {
   CollectionDataEventCallback,
   CollectionEventCallback,
   ICollection,
   IIndexedByString,
   QueryFunction,
-} from './types';
+} from "./types";
 
-export default class Collection<T extends {[index: string]: any}> implements ICollection<T> {
+export default class Collection<T extends { [index: string]: any }> implements ICollection<T> {
   public indexName: string;
   protected events: EventEmitter<string | symbol>;
   protected list: IIndexedByString<T> = {};
@@ -43,7 +43,7 @@ export default class Collection<T extends {[index: string]: any}> implements ICo
   }
 
   add(...items: T[]): void {
-    this.events.emit('before:add', this, ...items);
+    this.events.emit("before:add", this, ...items);
 
     items.forEach((item: T) => {
       const index = item[this.indexName];
@@ -52,25 +52,26 @@ export default class Collection<T extends {[index: string]: any}> implements ICo
       this.list[index] = item;
     });
 
-    this.events.emit('add', this);
+    this.events.emit("add", this);
   }
 
   remove(id: string): void {
     if (this.contains(id)) {
-      this.events.emit('before:remove', this);
+      this.events.emit("before:remove", this, this.list[id]);
 
+      const deletedItem = this.list[id];
       delete this.list[id];
 
-      this.events.emit('remove');
+      this.events.emit("remove", this, deletedItem);
     }
   }
 
   removeAll(): void {
-    this.events.emit('before:removeAll', this);
+    this.events.emit("before:removeAll", this);
 
     this.list = {};
 
-    this.events.emit('removeAll', this);
+    this.events.emit("removeAll", this);
   }
 
   static fromArrayOf<T>(items: T[], indexName: string) {
@@ -82,26 +83,26 @@ export default class Collection<T extends {[index: string]: any}> implements ICo
   }
 
   onBeforeAdd(callback: CollectionDataEventCallback<T>) {
-    this.events.on('before:add', callback);
+    this.events.on("before:add", callback);
   }
 
-  onAdd(callback: CollectionEventCallback<T>) {
-    this.events.on('add', callback);
+  onAdd(callback: CollectionDataEventCallback<T>) {
+    this.events.on("add", callback);
   }
 
-  onBeforeRemove(callback: CollectionEventCallback<T>) {
-    this.events.on('before:remove', callback);
+  onBeforeRemove(callback: CollectionDataEventCallback<T>) {
+    this.events.on("before:remove", callback);
   }
 
-  onRemove(callback: CollectionEventCallback<T>) {
-    this.events.on('remove', callback);
+  onRemove(callback: CollectionDataEventCallback<T>) {
+    this.events.on("remove", callback);
   }
 
   onBeforeRemoveAll(callback: CollectionEventCallback<T>) {
-    this.events.on('before:removeAll', callback);
+    this.events.on("before:removeAll", callback);
   }
 
   onRemoveAll(callback: CollectionEventCallback<T>) {
-    this.events.on('removeAll', callback);
+    this.events.on("removeAll", callback);
   }
 }
