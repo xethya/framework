@@ -1,8 +1,6 @@
-import { array, assert, Collection, numeric, Range } from "@xethya/utils";
+import { assert, Collection, numeric, Range } from "@xethya/utils";
 import { v4 as generateUUID } from "uuid";
 
-const { byKey } = array.mappers;
-const { bySum } = array.reducers;
 const { formatThousands } = numeric;
 
 export const enum ModifierType {
@@ -32,6 +30,9 @@ export type Modifier = {
 
   /**
    * Why is this boost or drop occuring.
+   *
+   * @todo This data structure might be insufficient.
+   * @see https://github.com/xethya/framework/issues/44
    */
   reason?: string;
 
@@ -72,12 +73,12 @@ export type PointFormatOptions = {
   /**
    * Whether to format the score value as thousands (i.e. 1,000,000).
    */
-  formatScoreInThousands: boolean;
+  formatScoreInThousands?: boolean;
 
   /**
    * Whether to show the unit name along the value (i.e. 1,000,000 HP).
    */
-  showUnit: boolean;
+  showUnit?: boolean;
 
   /**
    * The separator to use when splitting thousands (i.e. "," or ".").
@@ -118,8 +119,8 @@ export class Point {
   protected readonly temporaryModifiers: Collection<Modifier>;
 
   protected lastScore: number = 0;
-
-  protected lastModifierCount: number = -1;
+  protected lastModifier: Modifier;
+  protected lastModifierCount: number = 0;
 
   /**
    * Points are cumulative units that can reflect different features of a creature.
@@ -147,26 +148,35 @@ export class Point {
     this.temporaryModifiers = new Collection<Modifier>("id");
 
     this.permanentModifiers.onBeforeAdd(this.checkForValidModifier.bind(this));
-    this.permanentModifiers.onBeforeAdd(this.increaseModifierCount.bind(this));
     this.permanentModifiers.onAdd(this.updateLastScore.bind(this));
+    this.permanentModifiers.onAdd(this.increaseModifierCount.bind(this));
 
     this.temporaryModifiers.onBeforeAdd(this.checkForValidModifier.bind(this));
-    this.temporaryModifiers.onBeforeAdd(this.increaseModifierCount.bind(this));
-    this.temporaryModifiers.onBeforeRemove(this.decreaseModifierCount.bind(this));
     this.temporaryModifiers.onAdd(this.updateLastScore.bind(this));
     this.temporaryModifiers.onRemove(this.updateLastScore.bind(this));
+    this.temporaryModifiers.onAdd(this.increaseModifierCount.bind(this));
+    this.temporaryModifiers.onRemove(this.decreaseModifierCount.bind(this));
   }
 
-  protected increaseModifierCount() {
+  protected increaseModifierCount(_: Collection<Modifier>, modifier: Modifier) {
     this.lastModifierCount += 1;
   }
 
-  protected decreaseModifierCount() {
+  protected decreaseModifierCount(_: Collection<Modifier>, modifier: Modifier) {
     this.lastModifierCount -= 1;
   }
 
-  protected updateLastScore(_: Collection<Modifier>, modifier: Modifier) {
-    this.lastScore += modifier.factor;
+  protected updateLastScore(collection: Collection<Modifier>) {
+    let factor = this.lastModifier.factor;
+
+    if (
+      collection === this.temporaryModifiers &&
+      this.lastModifierCount - 1 === this.permanentModifiers.count + this.temporaryModifiers.count
+    ) {
+      factor = -factor;
+    }
+
+    this.lastScore += factor;
   }
 
   /**
@@ -183,9 +193,8 @@ export class Point {
       assert(factor > 0, "Point changes must use a factor greater than zero");
       assert(
         this.range.includes(this.lastScore + factor),
-        `Boosting ${isPermanent ? "permanently" : "temporarily"} by ${factor} makes the score ${
-          this.lastScore
-        }, which goes out of the range ${this.range.toString()}`,
+        `Boosting ${isPermanent ? "permanently" : "temporarily"} by ${factor} makes the score ${this.lastScore +
+          factor}, which goes out of the range ${this.range.toString()}`,
       );
     }
 
@@ -193,11 +202,12 @@ export class Point {
       assert(factor < 0, "Point changes must use a factor greater than zero");
       assert(
         this.range.includes(this.lastScore - factor),
-        `Dropping ${isPermanent ? "permanently" : "temporarily"} by ${factor} makes the score ${
-          this.lastScore
-        }, which goes out of the range ${this.range.toString()}`,
+        `Dropping ${isPermanent ? "permanently" : "temporarily"} by ${factor} makes the score ${this.lastScore -
+          factor}, which goes out of the range ${this.range.toString()}`,
       );
     }
+
+    this.lastModifier = modifier;
   }
 
   /**
@@ -259,45 +269,10 @@ export class Point {
   }
 
   /**
-   * Calculates the total sum of all permanent modifiers.
-   */
-  private get permanentFactorSum(): number {
-    if (!this.permanentModifiers.count) {
-      return 0;
-    }
-
-    return this.permanentModifiers
-      .getAll()
-      .map(byKey("factor"))
-      .reduce(bySum);
-  }
-
-  /**
-   * Calculates the total sum of all temporary modifiers.
-   */
-  private get temporaryFactorSum(): number {
-    if (!this.temporaryModifiers.count) {
-      return 0;
-    }
-
-    return this.temporaryModifiers
-      .getAll()
-      .map(byKey("factor"))
-      .reduce(bySum);
-  }
-
-  /**
    * Calculates the current score in the point counter.
    */
-  public get score(): number {
-    if (this.lastModifierCount === this.permanentModifiers.count + this.temporaryModifiers.count) {
-      return this.lastScore;
-    }
-
-    const score = this.initialScore + this.permanentFactorSum + this.temporaryFactorSum;
-    this.lastScore = score;
-
-    return score;
+  public getScore(): number {
+    return this.lastScore;
   }
 
   /**
@@ -312,9 +287,9 @@ export class Point {
       thousandSeparator: ".",
     },
   ): string {
-    const { formatScoreInThousands, showUnit, thousandSeparator } = formatOptions;
+    const { formatScoreInThousands = true, showUnit = true, thousandSeparator = "." } = formatOptions;
 
-    const score = formatScoreInThousands ? formatThousands(this.score, thousandSeparator) : this.score;
+    const score = formatScoreInThousands ? formatThousands(this.lastScore, thousandSeparator) : this.lastScore;
     const unit = showUnit ? ` ${this.unit}` : "";
     return `${score}${unit}`;
   }
