@@ -80,4 +80,38 @@ describe("Creature", () => {
     expect(creature.size).toEqual(CreatureSize.Medium);
     expect(creature.alignment).toEqual(CreatureAlignment.Neutral);
   });
+
+  it("should have arbitrary hit points", () => {
+    const creature = new Creature({ hitPoints: 100 });
+    expect(creature.hitPoints.getScore()).toEqual(100);
+  });
+
+  it("should have hit points by its size", () => {
+    const fineCreature = new Creature({ size: CreatureSize.Fine });
+    expect(fineCreature.hitPoints.getScore()).toEqual(3);
+
+    const diminituveCreature = new Creature({ size: CreatureSize.Diminutive });
+    expect(diminituveCreature.hitPoints.getScore()).toEqual(4);
+
+    const tinyCreature = new Creature({ size: CreatureSize.Tiny });
+    expect(tinyCreature.hitPoints.getScore()).toEqual(5);
+
+    const smallCreature = new Creature({ size: CreatureSize.Small });
+    expect(smallCreature.hitPoints.getScore()).toEqual(7);
+
+    const mediumCreature = new Creature({ size: CreatureSize.Medium });
+    expect(mediumCreature.hitPoints.getScore()).toEqual(9);
+
+    const largeCreature = new Creature({ size: CreatureSize.Large });
+    expect(largeCreature.hitPoints.getScore()).toEqual(11);
+
+    const hugeCreature = new Creature({ size: CreatureSize.Huge });
+    expect(hugeCreature.hitPoints.getScore()).toEqual(13);
+
+    const gargantuanCreature = new Creature({ size: CreatureSize.Gargantuan });
+    expect(gargantuanCreature.hitPoints.getScore()).toEqual(21);
+
+    const colossalCreature = new Creature({ size: CreatureSize.Colossal });
+    expect(colossalCreature.hitPoints.getScore()).toEqual(33);
+  });
 });
