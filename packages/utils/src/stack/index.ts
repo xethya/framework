@@ -1,2 +1,2 @@
-export * from "./limited-capacity-stack";
 export * from "./stack";
+export * from "./weighted-stack";
