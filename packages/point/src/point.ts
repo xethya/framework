@@ -1,4 +1,4 @@
-import { assert, Collection, numeric, Range } from "@xethya/utils";
+import { assert, Collection, numeric, Range, Stack } from "@xethya/utils";
 import { v4 as generateUUID } from "uuid";
 
 const { formatThousands } = numeric;
@@ -86,6 +86,8 @@ export type PointFormatOptions = {
   thousandSeparator?: string;
 };
 
+export type CalculatedModifier = () => number;
+
 export class Point {
   /**
    * The name of this score.
@@ -133,6 +135,8 @@ export class Point {
    */
   protected lastModifierCount: number = 0;
 
+  protected calculations: Stack<CalculatedModifier>;
+
   /**
    * Points are cumulative units that can reflect different features of a creature.
    * Some examples would be hit points (how many hits a creature can take before dying
@@ -157,6 +161,7 @@ export class Point {
 
     this.permanentModifiers = new Collection<Modifier>("id");
     this.temporaryModifiers = new Collection<Modifier>("id");
+    this.calculations = new Stack<CalculatedModifier>();
 
     this.permanentModifiers.onBeforeAdd(this.checkForValidModifier.bind(this));
     this.permanentModifiers.onAdd(this.updateLastScore.bind(this));
@@ -292,10 +297,38 @@ export class Point {
     this.temporaryModifiers.remove(modifier.id);
   }
 
+  public addCalculation(calc: CalculatedModifier): void {
+    this.calculations.push(calc);
+  }
+
   /**
    * Calculates the current score in the point counter.
    */
   public getScore(): number {
+    let calculatedScore = 0;
+    const executedCalculations = new Stack<CalculatedModifier>();
+
+    let calc: CalculatedModifier | void;
+
+    // tslint:disable-next-line: no-conditional-assignment
+    while ((calc = this.calculations.pop())) {
+      calculatedScore += calc();
+      assert(
+        this.range.includes(this.lastScore + calculatedScore),
+        `Calculation exceeds score range of ${this.range.toString()}`,
+      );
+      executedCalculations.push(calc);
+    }
+
+    // tslint:disable-next-line: no-conditional-assignment
+    while ((calc = executedCalculations.pop())) {
+      this.calculations.push(calc);
+    }
+
+    return this.lastScore + calculatedScore;
+  }
+
+  public getLastScore(): number {
     return this.lastScore;
   }
 
