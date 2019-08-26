@@ -1,4 +1,4 @@
-import { KeysMatching } from "types";
+import { KeysMatching } from "../types";
 import { Stack } from "./stack";
 
 /**
