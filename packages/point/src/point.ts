@@ -1,4 +1,4 @@
-import { assert, Collection, numeric, Range } from "@xethya/utils";
+import { assert, Collection, numeric, Range, Stack } from "@xethya/utils";
 import { v4 as generateUUID } from "uuid";
 
 const { formatThousands } = numeric;
@@ -86,6 +86,8 @@ export type PointFormatOptions = {
   thousandSeparator?: string;
 };
 
+export type CalculatedModifier = () => number;
+
 export class Point {
   /**
    * The name of this score.
@@ -118,9 +120,22 @@ export class Point {
    */
   protected readonly temporaryModifiers: Collection<Modifier>;
 
+  /**
+   * Stores the latest score calculation.
+   */
   protected lastScore: number = 0;
+
+  /**
+   * Stores the latest boost or drop registered.
+   */
   protected lastModifier: Modifier;
+
+  /**
+   * Stores the amount of boosts or drops registered so far.
+   */
   protected lastModifierCount: number = 0;
+
+  protected calculations: Stack<CalculatedModifier>;
 
   /**
    * Points are cumulative units that can reflect different features of a creature.
@@ -146,6 +161,7 @@ export class Point {
 
     this.permanentModifiers = new Collection<Modifier>("id");
     this.temporaryModifiers = new Collection<Modifier>("id");
+    this.calculations = new Stack<CalculatedModifier>();
 
     this.permanentModifiers.onBeforeAdd(this.checkForValidModifier.bind(this));
     this.permanentModifiers.onAdd(this.updateLastScore.bind(this));
@@ -158,21 +174,34 @@ export class Point {
     this.temporaryModifiers.onRemove(this.decreaseModifierCount.bind(this));
   }
 
-  protected increaseModifierCount(_: Collection<Modifier>, modifier: Modifier) {
+  /**
+   * Used to update how many modifiers have been registered so far.
+   * Triggers after adding either a temporary or permanent modifier.
+   */
+  protected increaseModifierCount() {
     this.lastModifierCount += 1;
   }
 
-  protected decreaseModifierCount(_: Collection<Modifier>, modifier: Modifier) {
+  /**
+   * Used to update how many modifiers have been registered so far.
+   * Triggers after removing a temporary modifier.
+   */
+  protected decreaseModifierCount() {
     this.lastModifierCount -= 1;
   }
 
+  /**
+   * Updates the score counter with the latest boost or drop that was added or removed.
+   *
+   * @param collection The list of modifiers being affected.
+   */
   protected updateLastScore(collection: Collection<Modifier>) {
     let factor = this.lastModifier.factor;
+    const isTemporaryModifier = collection === this.temporaryModifiers;
+    const isRemovingModifier =
+      this.lastModifierCount - 1 === this.permanentModifiers.count + this.temporaryModifiers.count;
 
-    if (
-      collection === this.temporaryModifiers &&
-      this.lastModifierCount - 1 === this.permanentModifiers.count + this.temporaryModifiers.count
-    ) {
+    if (isTemporaryModifier && isRemovingModifier) {
       factor = -factor;
     }
 
@@ -268,10 +297,38 @@ export class Point {
     this.temporaryModifiers.remove(modifier.id);
   }
 
+  public addCalculation(calc: CalculatedModifier): void {
+    this.calculations.push(calc);
+  }
+
   /**
    * Calculates the current score in the point counter.
    */
   public getScore(): number {
+    let calculatedScore = 0;
+    const executedCalculations = new Stack<CalculatedModifier>();
+
+    let calc: CalculatedModifier | void;
+
+    // tslint:disable-next-line: no-conditional-assignment
+    while ((calc = this.calculations.pop())) {
+      calculatedScore += calc();
+      assert(
+        this.range.includes(this.lastScore + calculatedScore),
+        `Calculation exceeds score range of ${this.range.toString()}`,
+      );
+      executedCalculations.push(calc);
+    }
+
+    // tslint:disable-next-line: no-conditional-assignment
+    while ((calc = executedCalculations.pop())) {
+      this.calculations.push(calc);
+    }
+
+    return this.lastScore + calculatedScore;
+  }
+
+  public getLastScore(): number {
     return this.lastScore;
   }
 
