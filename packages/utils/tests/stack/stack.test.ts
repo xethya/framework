@@ -11,6 +11,10 @@ describe("Stack", () => {
     expect(stack.isEmpty()).toEqual(true);
   });
 
+  it("can peek on an empty stack", () => {
+    expect(stack.peek()).toEqual(undefined);
+  });
+
   it("can receive a new element", () => {
     stack.push(1);
     expect(stack.peek()).toEqual(1);
