@@ -82,4 +82,34 @@ describe("Point", () => {
     expect(healthPoints.toString({ showUnit: false, formatScoreInThousands: false })).toEqual("1000");
     expect(healthPoints.toString({ thousandSeparator: "," })).toEqual("1,000 HP");
   });
+
+  it("can be calculated with external dependencies", () => {
+    let foo = 30;
+    const boostWithFoo = () => foo / 2;
+
+    healthPoints.addCalculation(boostWithFoo);
+
+    expect(healthPoints.getScore()).toEqual(115);
+
+    foo = 50;
+    expect(healthPoints.getScore()).toEqual(125);
+  });
+
+  it("can't overflow the range with calculations", () => {
+    const foo = 200;
+    const dropWithFoo = () => -foo;
+
+    healthPoints.addCalculation(dropWithFoo);
+    expect(() => healthPoints.getScore()).toThrow(/exceeds score range/);
+  });
+
+  it("can return the score without calculations", () => {
+    const foo = 30;
+    const boostWithFoo = () => foo / 2;
+
+    healthPoints.addCalculation(boostWithFoo);
+
+    expect(healthPoints.getScore()).toEqual(115);
+    expect(healthPoints.getLastScore()).toEqual(100);
+  });
 });
