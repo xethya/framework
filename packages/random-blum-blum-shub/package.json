@@ -14,7 +14,7 @@
     "jest": "^24.9.0",
     "rollup": "^1.20.1",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-typescript2": "^0.23.0",
+    "rollup-plugin-typescript2": "^0.24.0",
     "ts-jest": "^24.0.2",
     "tslint": "^5.19.0",
     "typescript": "^3.5.3"
