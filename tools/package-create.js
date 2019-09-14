@@ -52,6 +52,9 @@ const templatePackageJson = `
     "test": "jest --runInBand --detectOpenHandles --bail --forceExit",
     "test:coverage": "jest --runInBand --detectOpenHandles --bail --forceExit --coverage"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "jest": {
     "preset": "ts-jest",
     "collectCoverageFrom": [
