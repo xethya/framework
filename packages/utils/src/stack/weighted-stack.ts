@@ -27,7 +27,7 @@ export class WeightedStack<T> extends Stack<T> {
    * A structure that works like a stack but stops receiving elements if a given threshold is reached.
    *
    * @param capacity Indicates the total amount of elements allowed in the stack.
-   * @Param weightKey Points to a property in T that contains the weight of the item. If left undefined,
+   * @param weightKey Points to a property in T that contains the weight of the item. If left undefined,
    *                  the stack will assume all elements have a weight of 1.
    */
   constructor(capacity: number, weightKey?: WeightKey<T>) {
