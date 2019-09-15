@@ -41,6 +41,6 @@
     ]
   },
   "dependencies": {
-    "@xethya/utils": "^0.1.7"
+    "@xethya/utils": "^0.1.8"
   }
 }

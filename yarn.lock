@@ -1225,13 +1225,6 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@xethya/utils@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@xethya/utils/-/utils-0.1.7.tgz#5d812fb3fc1e896c8e987241abb3ac0658f61cd8"
-  integrity sha512-ZBwqNCLit7iGByRi0q+5tnv6Q/fM4t5QfoOCIUYj28+PZ0LcyVC20gszKOXS/PoSCdW/3F0Msk6T8QFRBQmGcQ==
-  dependencies:
-    eventemitter3 "^4.0.0"
-
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-3.1.0.tgz#2ab8ed81f5bb5452a85f25758eb9b8681982fd2e"
