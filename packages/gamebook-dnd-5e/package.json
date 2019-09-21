@@ -39,6 +39,6 @@
     ]
   },
   "dependencies": {
-    "@xethya/ability": "^0.0.3"
+    "@xethya/ability": "^0.0.4"
   }
 }
