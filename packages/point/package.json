@@ -1,7 +1,7 @@
 {
   "name": "@xethya/point",
   "shortName": "point",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "dist/xethya.point.js",
   "module": "dist/xethya.point.es.js",
@@ -46,7 +46,7 @@
     ]
   },
   "dependencies": {
-    "@xethya/utils": "^0.1.5",
+    "@xethya/utils": "*",
     "uuid": "^3.3.3"
   }
 }

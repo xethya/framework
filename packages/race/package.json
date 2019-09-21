@@ -1,7 +1,7 @@
 {
   "name": "@xethya/race",
   "shortName": "race",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/xethya.race.js",
   "module": "dist/xethya.race.es.js",
@@ -39,6 +39,6 @@
     ]
   },
   "dependencies": {
-    "@xethya/definitions": "^0.0.5"
+    "@xethya/definitions": "*"
   }
 }

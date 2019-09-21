@@ -1240,44 +1240,6 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@xethya/ability@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@xethya/ability/-/ability-0.0.3.tgz#c2a772998a452da47139d91ff76482c032125e8a"
-  integrity sha512-gX06ssmw/ZpC95doPLjAIoWRoOwZ1Gb9qM0aOdnwni+RupnXb0X/LTXrhLw4l49XruQFxYj1YdkDaBvaoaAIcw==
-
-"@xethya/ability@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@xethya/ability/-/ability-0.0.4.tgz#5de4d7ab72cf8a2903a0a359987245027bda6d87"
-  integrity sha512-s6A0bN7vxcH4pFec2HxXHUhTBNbblKvR0I3qTZLYmK+R8NpDnkpoSByHcVZqiDQGaAGVDXXJTD2AUG94zuZJvA==
-
-"@xethya/definitions@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@xethya/definitions/-/definitions-0.0.4.tgz#9cdb3e0b788f6c60039e0d7e43c495cd350c873a"
-  integrity sha512-zYl1u7n68m/OR34qwquc4o6mqD44YqikYxBTZQ64mwUBsT1Dd7BrLjUPTI70W8fvjPnWZeiPbWqB8482j3KeOg==
-
-"@xethya/inventory@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@xethya/inventory/-/inventory-0.0.2.tgz#385147e68b1bd004aeda37569c12e0fa67806bc5"
-  integrity sha512-TbmFW6bUGbbSw7LuREmo0rQLWp7TyCYg/ZhSw8KJA/V16JhZx4VB+vRe3t1D1yx+UTWWeGNij/ZuCSl31ba6wQ==
-  dependencies:
-    "@xethya/utils" "^0.1.8"
-    uuid "^3.3.3"
-
-"@xethya/point@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@xethya/point/-/point-0.0.3.tgz#7155bae8831ec7e6ec5d0d461db41ed19c172bb0"
-  integrity sha512-9boPqbd75Wnoq22tRSRXViq8RAZJdxIxYeu6ugVAJgKTMfzC3S080ljvGotbfiC3Bj48dvh0utIlDcAKX6SYoA==
-  dependencies:
-    "@xethya/utils" "^0.1.5"
-    uuid "^3.3.3"
-
-"@xethya/race@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@xethya/race/-/race-0.0.1.tgz#9e3134325f2a6ac1c473f00e00fabc4cdefb1666"
-  integrity sha512-dolKwkHAGQUdIUWRYr3WHG4/VUOdXkpj6ZEsKkkRztdK1VIOdvRkrlvKlbx/EmZVXTxdvM8oJAKmWyuF5ab3gA==
-  dependencies:
-    "@xethya/definitions" "^0.0.4"
-
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-3.1.0.tgz#2ab8ed81f5bb5452a85f25758eb9b8681982fd2e"

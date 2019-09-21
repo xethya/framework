@@ -1,7 +1,7 @@
 {
   "name": "@xethya/inventory",
   "shortName": "inventory",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "dist/xethya.inventory.js",
   "module": "dist/xethya.inventory.es.js",
@@ -46,7 +46,7 @@
     ]
   },
   "dependencies": {
-    "@xethya/utils": "^0.1.8",
+    "@xethya/utils": "*",
     "uuid": "^3.3.3"
   }
 }
