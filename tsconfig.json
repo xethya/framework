@@ -11,14 +11,11 @@
     "noImplicitAny": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "es2015",
-      "esnext.array",
-      "es2016.array.include"
-    ],
+    "lib": ["es2015", "esnext.array", "es2016.array.include"],
     "baseUrl": "./packages",
     "paths": {
       "@xethya/*": ["./*/src/index.ts"]
-    }
+    },
+    "skipLibCheck": true
   }
 }
