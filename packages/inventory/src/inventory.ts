@@ -1,4 +1,4 @@
-import { DynamicWeightedStack, Stack } from "@xethya/utils";
+import { assert, DynamicWeightedStack, Stack } from "@xethya/utils";
 import { Item } from "./item";
 
 /**
@@ -74,6 +74,8 @@ export class Inventory {
    */
   protected readonly capacityProvider: InventoryCapacityProvider;
 
+  protected lastCalculatedCapacity: number;
+
   /**
    * Counts how many items have been stored in the inventory.
    *
@@ -97,13 +99,24 @@ export class Inventory {
   constructor(options: InventoryOptions = {}) {
     this.capacityProvider = options.capacityProvider || INVENTORY_DEFAULT_CAPACITY_PROVIDER;
     this.contents = new DynamicWeightedStack<Item>(this.capacity, "weight");
+    this.index = {};
   }
 
   /**
-   * Indicates the current capacity of the inventory.
+   * Indicates the current capacity of the inventory. If the capacity has
+   * changed since the last time it was calculate, it'll autoresize the
+   * inventory's stack.
    */
   public get capacity(): number {
-    return this.capacityProvider.bind(this)();
+    const capacity = this.capacityProvider.bind(this)();
+
+    if (this.lastCalculatedCapacity && this.lastCalculatedCapacity !== capacity) {
+      this.contents.resize(this.lastCalculatedCapacity);
+    }
+
+    this.lastCalculatedCapacity = capacity;
+
+    return this.lastCalculatedCapacity;
   }
 
   /**
@@ -121,18 +134,20 @@ export class Inventory {
   }
 
   /**
-   * Puts an item inside this inventory. This will affect
+   * Puts an item or items inside this inventory. This will affect
    * the inventory's occupied capacity.
    *
-   * @param item {Item}
+   * @param items {...Item}
    */
-  put(item: Item) {
-    this.contents.push(item);
-    this.index[item.id] = { position: this.count, item };
+  put(...items: Item[]): void {
+    items.forEach(item => {
+      this.contents.push(item);
+      this.index[item.id] = { position: this.count, item };
 
-    // TODO: These could be exposed from the stack, removing the need for extra state.
-    this.count += 1;
-    this.occupiedCapacity += item.weight;
+      // TODO: These could be exposed from the stack, removing the need for extra state.
+      this.count += 1;
+      this.occupiedCapacity += item.weight;
+    });
   }
 
   /**
@@ -142,8 +157,8 @@ export class Inventory {
    *
    * @param id {string}
    */
-  peek(id: string): Item {
-    return this.index[id].item;
+  peek(id: string): Item | void {
+    return this.index[id] ? this.index[id].item : undefined;
   }
 
   /**
@@ -154,6 +169,10 @@ export class Inventory {
    * @param position {number}
    */
   peekAt(position: number): Item | void {
+    if (this.isEmpty()) {
+      return;
+    }
+
     const indexEntry = this.getByPosition(position);
 
     if (!indexEntry) {
@@ -168,6 +187,10 @@ export class Inventory {
    * items as an array.
    */
   peekAll(): Item[] {
+    if (this.isEmpty()) {
+      return [];
+    }
+
     const items: Item[] = [];
     this.indexEntries.forEach(({ position, item }) => (items[position] = item));
     return items;
@@ -180,7 +203,11 @@ export class Inventory {
    * @param id {string}
    */
   retrieve(id: string): Item | void {
-    const { item } = this.index[id];
+    if (this.isEmpty()) {
+      return;
+    }
+
+    const item = this.peek(id);
 
     if (!item) {
       return;
@@ -198,6 +225,10 @@ export class Inventory {
    * @param id {string}
    */
   retrieveAt(position: number): Item | void {
+    if (this.isEmpty()) {
+      return;
+    }
+
     const item = this.peekAt(position);
 
     if (!item) {
@@ -207,6 +238,20 @@ export class Inventory {
     this.extractFromContents(item);
 
     return item;
+  }
+
+  /**
+   * Returns `true` if the inventory is full, `false` if it's not.
+   */
+  isFull(): boolean {
+    return this.getAvailableSpace() === 0;
+  }
+
+  /**
+   * Returns `true` if the inventory is empty, `false` if it's not.
+   */
+  isEmpty(): boolean {
+    return this.getAvailableSpace() === this.capacity;
   }
 
   /**
@@ -241,6 +286,7 @@ export class Inventory {
    * @param position {number}
    */
   protected getByPosition(position: number) {
+    assert(position >= 0, "A non-negative index must be used to access the inventory by position");
     return this.indexEntries.find(entry => entry.position === position);
   }
 }
