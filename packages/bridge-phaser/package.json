@@ -1,6 +1,6 @@
 {
   "name": "@xethya/bridge-phaser",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "shortName": "bridge.Phaser",
   "main": "dist/xethya.bridge-phaser.js",
   "module": "dist/xethya.bridge-phaser.es.js",

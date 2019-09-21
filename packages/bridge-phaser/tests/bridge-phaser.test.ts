@@ -1,34 +1,8 @@
-import { InventoryOptions } from "@xethya/inventory";
 import { expect } from "chai";
 import "mocha";
 import { AUTO, Game, Plugins, Scene, Types } from "phaser";
 import { DieGameObject } from "../src/game-objects/die";
-import { InventoryGameObject } from "../src/game-objects/inventory";
 import { XethyaPlugin } from "../src/index";
-
-type XethyaGameObjectFactory = XethyaDiceGameObjects & XethyaInventoryGameObjects;
-
-type XethyaInventoryGameObjects = {
-  inventory(options?: InventoryOptions): InventoryGameObject;
-};
-
-type XethyaDiceGameObjects = {
-  die(faces?: number): DieGameObject;
-  coinFlip(): DieGameObject;
-  d4(): DieGameObject;
-  d6(): DieGameObject;
-  d8(): DieGameObject;
-  d10(): DieGameObject;
-  d12(): DieGameObject;
-  d20(): DieGameObject;
-  d100(): DieGameObject;
-};
-
-declare module "phaser" {
-  namespace GameObjects {
-    interface GameObjectFactory extends XethyaGameObjectFactory {}
-  }
-}
 
 declare var window: { game: Game };
 
@@ -67,12 +41,12 @@ describe("Bridge: Phaser", () => {
   });
 
   describe("Die extension", () => {
-    function simulateWith(key: keyof XethyaDiceGameObjects, done: (err?: string) => void, faces?: number) {
+    function simulateWith(key: string, done: (err?: string) => void, faces?: number) {
       config = { ...baseConfig, scene: { create } };
 
       function create(this: Scene) {
-        const die = this.add[key](faces);
-        const roll = die.roll();
+        const dieGameObject = this.add[key](faces) as DieGameObject;
+        const roll = dieGameObject.die.roll();
         console.log(key, "Rolled!", roll);
         expect(!isNaN(roll), "Roll failed").to.be.true;
         done();

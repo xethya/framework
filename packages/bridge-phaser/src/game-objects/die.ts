@@ -2,7 +2,7 @@ import { Die } from "@xethya/dice";
 import { GameObjects, Scene } from "phaser";
 
 export class DieGameObject extends GameObjects.GameObject {
-  protected readonly die: Die;
+  public readonly die: Die;
 
   constructor(scene: Scene, faces: number) {
     super(scene, "die");
@@ -14,9 +14,5 @@ export class DieGameObject extends GameObjects.GameObject {
         },
       },
     });
-  }
-
-  roll() {
-    return this.die.roll();
   }
 }
