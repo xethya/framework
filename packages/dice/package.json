@@ -1,11 +1,12 @@
 {
   "name": "@xethya/dice",
   "shortName": "dice",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "",
   "main": "dist/xethya.dice.js",
   "module": "dist/xethya.dice.es.js",
   "iife": "dist/xethya.dice.iife.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",

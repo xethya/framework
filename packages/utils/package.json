@@ -1,11 +1,12 @@
 {
   "name": "@xethya/utils",
   "shortName": "utils",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "description": "Common tools and functions used throughout the Xethya framework.",
   "main": "dist/xethya.utils.js",
   "module": "dist/xethya.utils.es.js",
   "iife": "dist/xethya.utils.iife.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",

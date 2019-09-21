@@ -1,11 +1,12 @@
 {
   "name": "@xethya/point",
   "shortName": "point",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "",
   "main": "dist/xethya.point.js",
   "module": "dist/xethya.point.es.js",
   "iife": "dist/xethya.point.iife.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
