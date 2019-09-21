@@ -1,11 +1,12 @@
 {
   "name": "@xethya/random-mersenne-twister",
   "shortName": "random.MersenneTwister",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "description": "",
   "main": "dist/xethya.mersenne-twister.js",
   "module": "dist/xethya.mersenne-twister.es.js",
   "iife": "dist/xethya.mersenne-twister.iife.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
@@ -17,8 +18,8 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@xethya/random-core": "^0.1.2",
-    "@xethya/utils": "^0.1.2"
+    "@xethya/random-core": "*",
+    "@xethya/utils": "*"
   },
   "scripts": {
     "build": "tsc -b && rollup -c",

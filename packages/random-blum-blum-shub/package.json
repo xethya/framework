@@ -1,11 +1,12 @@
 {
   "name": "@xethya/random-blum-blum-shub",
   "shortName": "random.BlumBlumShub",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "An implementation of the BlumBlumShub pseudo-random number generator.",
   "main": "dist/xethya.random.blum-blum-shub.js",
   "module": "dist/xethya.random.blum-blum-shub.es.js",
   "iife": "dist/xethya.random.blum-blum-shub.iife.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
@@ -39,6 +40,6 @@
     ]
   },
   "dependencies": {
-    "@xethya/random-core": "^0.1.2"
+    "@xethya/random-core": "*"
   }
 }

@@ -1,10 +1,11 @@
 {
   "name": "@xethya/bridge-phaser",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "shortName": "bridge.Phaser",
   "main": "dist/xethya.bridge-phaser.js",
   "module": "dist/xethya.bridge-phaser.es.js",
   "iife": "dist/xethya.bridge-phaser.iife.js",
+  "types": "dist/index.d.ts",
   "description": "A bridge to integrate Xethya objects into the Phaser framework.",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
@@ -37,7 +38,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@xethya/dice": "^0.1.2",
-    "@xethya/inventory": "^0.0.2"
+    "@xethya/dice": "*",
+    "@xethya/inventory": "*"
   }
 }

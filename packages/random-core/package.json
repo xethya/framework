@@ -1,11 +1,12 @@
 {
   "name": "@xethya/random-core",
   "shortName": "random.core",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "",
   "main": "dist/xethya.random-core.js",
   "module": "dist/xethya.random-core.es.js",
   "iife": "dist/xethya.random-core.iife.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",

@@ -1,11 +1,12 @@
 {
   "name": "@xethya/creature",
   "shortName": "creature",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/xethya.creature.js",
   "module": "dist/xethya.creature.es.js",
   "iife": "dist/xethya.creature.iife.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
@@ -40,10 +41,10 @@
     ]
   },
   "dependencies": {
-    "@xethya/ability": "^0.0.3",
-    "@xethya/definitions": "^0.0.4",
-    "@xethya/point": "^0.0.3",
-    "@xethya/race": "^0.0.1",
+    "@xethya/ability": "*",
+    "@xethya/definitions": "*",
+    "@xethya/point": "*",
+    "@xethya/race": "*",
     "uuid": "^3.3.3"
   }
 }

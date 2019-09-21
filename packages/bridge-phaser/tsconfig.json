@@ -1,7 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["phaser", "node", "mocha", "chai"],
+    "baseUrl": "./src",
+    "types": ["phaser", "node", "mocha", "chai", "@xethya/dice", "@xethya/inventory"],
     "skipLibCheck": true
-  }
+  },
+  "include": ["./src"]
 }

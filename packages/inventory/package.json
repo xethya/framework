@@ -1,11 +1,12 @@
 {
   "name": "@xethya/inventory",
   "shortName": "inventory",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "",
   "main": "dist/xethya.inventory.js",
   "module": "dist/xethya.inventory.es.js",
   "iife": "dist/xethya.inventory.iife.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
@@ -45,7 +46,7 @@
     ]
   },
   "dependencies": {
-    "@xethya/utils": "^0.1.8",
+    "@xethya/utils": "*",
     "uuid": "^3.3.3"
   }
 }
