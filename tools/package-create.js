@@ -43,6 +43,13 @@ const templatePackageJson = `
   "devDependencies": {
     "@types/jest": "${monorepoPackageJson.devDependencies["@types/jest"]}",
     "jest": "${monorepoPackageJson.devDependencies["jest"]}",
+    ${options.rollup ? `"rollup": "${monorepoPackageJson.devDependencies["rollup"]}",` : ""}
+    ${options.rollup ? `"rollup-plugin-json": "${monorepoPackageJson.devDependencies["rollup-plugin-json"]}",` : ""}
+    ${
+      options.rollup
+        ? `"rollup-plugin-typescript2": "${monorepoPackageJson.devDependencies["rollup-plugin-typescript2"]}",`
+        : ""
+    }
     "ts-jest": "${monorepoPackageJson.devDependencies["ts-jest"]}",
     "tslint": "${monorepoPackageJson.devDependencies["tslint"]}",
     "typescript": "${monorepoPackageJson.devDependencies["typescript"]}"
