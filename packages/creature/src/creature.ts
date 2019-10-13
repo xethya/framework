@@ -90,6 +90,11 @@ export class Creature {
   public readonly hitPoints: Point;
 
   /**
+   * Contains a list of items currently carried by the creature.
+   */
+  public readonly inventory: Inventory;
+
+  /**
    * Represents a lifeform.
    *
    * @param options Configures how this creature will behave.
@@ -97,6 +102,7 @@ export class Creature {
   public constructor(options: CreatureOptions = {}) {
     this.id = generateUUID();
     this.abilities = new Map<string, Ability>();
+    this.inventory = new Inventory();
 
     if (options.name) {
       this.name = options.name;
