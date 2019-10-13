@@ -46,7 +46,7 @@
     ]
   },
   "dependencies": {
-    "@xethya/item": "*",
+    "@xethya/item": "0.0.2",
     "@xethya/utils": "*",
     "uuid": "^3.3.3"
   }
