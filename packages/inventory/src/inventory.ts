@@ -1,5 +1,5 @@
+import { Item } from "@xethya/item";
 import { assert, DynamicWeightedStack, Stack } from "@xethya/utils";
-import { Item } from "./item";
 
 /**
  * By default, any inventory supports a maximum capacity

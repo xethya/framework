@@ -1240,6 +1240,13 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@xethya/item@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@xethya/item/-/item-0.0.2.tgz#b5e28db7b14383849d52019800a66d7673bb4b24"
+  integrity sha512-FWsBmQL3T2N4MCOzgeHoSz5GauuvzLgRvQn2XtpbQY4Zz/jyrqiddgO+N2Z3kAdem9kykdgnVPBUh618VMeRWg==
+  dependencies:
+    uuid "^3.3.3"
+
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-3.1.0.tgz#2ab8ed81f5bb5452a85f25758eb9b8681982fd2e"
