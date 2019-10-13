@@ -43,6 +43,7 @@
   "dependencies": {
     "@xethya/ability": "*",
     "@xethya/definitions": "*",
+    "@xethya/inventory": "*",
     "@xethya/point": "*",
     "@xethya/race": "*",
     "uuid": "^3.3.3"
