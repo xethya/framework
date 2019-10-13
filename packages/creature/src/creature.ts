@@ -1,5 +1,6 @@
 import Ability from "@xethya/ability";
 import { CreatureAlignment, CreatureSize } from "@xethya/definitions";
+import { Inventory } from "@xethya/inventory";
 import { Point } from "@xethya/point";
 import { Race } from "@xethya/race";
 import { v4 as generateUUID } from "uuid";
@@ -119,8 +120,9 @@ export class Creature {
     }
 
     if (this.races.length === 1) {
-      this.size = this.races[0].size;
-      this.alignment = this.races[0].alignment;
+      const [{ size, alignment }] = this.races;
+      this.size = size;
+      this.alignment = alignment;
     }
 
     if (options.size) {
@@ -141,8 +143,9 @@ export class Creature {
     });
 
     if (options.abilityForHitPoints) {
-      this.abilities.set(options.abilityForHitPoints.id, options.abilityForHitPoints);
-      this.hitPoints.addCalculation(() => options.abilityForHitPoints.modifier);
+      const { abilityForHitPoints } = options;
+      this.abilities.set(abilityForHitPoints.id, abilityForHitPoints);
+      this.hitPoints.addCalculation(() => abilityForHitPoints.modifier);
     }
   }
 }
