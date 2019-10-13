@@ -1,7 +1,7 @@
 {
   "name": "@xethya/creature",
   "shortName": "creature",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "dist/xethya.creature.js",
   "module": "dist/xethya.creature.es.js",
@@ -43,6 +43,7 @@
   "dependencies": {
     "@xethya/ability": "*",
     "@xethya/definitions": "*",
+    "@xethya/inventory": "*",
     "@xethya/point": "*",
     "@xethya/race": "*",
     "uuid": "^3.3.3"

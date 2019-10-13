@@ -17,6 +17,7 @@ describe("Creature", () => {
     expect(creature.races.length).toEqual(0);
     expect(creature.alignment).toEqual(CreatureAlignment.Neutral);
     expect(creature.size).toEqual(CreatureSize.Medium);
+    expect(creature.inventory.isEmpty()).toEqual(true);
   });
 
   it("should instantiate a Creature with alignment", () => {
