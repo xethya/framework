@@ -18,7 +18,7 @@ optionsArray.forEach(option => {
 });
 
 if (packageName === "--help" || !packageName) {
-  console.log("Usage: yarn package:create <packageName> [parameters]");
+  console.log("Usage: yarn package:create <packageName> [--rollup] [--shortName=...] [--moduleName=...]");
   console.log("");
   console.log("  --rollup       includes Rollup dependencies to transpile");
   console.log("  --shortName    namespace in Xethya's IIFE (use with --rollup)");
@@ -37,6 +37,7 @@ const templatePackageJson = `
   ${options.rollup ? '"main": "dist/xethya.' + options.moduleName + '.js",' : ""}
   ${options.rollup ? '"module": "dist/xethya.' + options.moduleName + '.es.js",' : ""}
   ${options.rollup ? '"iife": "dist/xethya.' + options.moduleName + '.iife.js",' : ""}
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
@@ -124,7 +125,11 @@ export default [
 
 const templateTsconfigJson = `
 {
-  "extends": "../../tsconfig.json"
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src"
+  },
+  "include": ["./src"]
 }
 `.trim();
 
