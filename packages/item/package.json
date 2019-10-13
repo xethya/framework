@@ -1,11 +1,12 @@
 {
   "name": "@xethya/item",
   "shortName": "item",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/xethya.item.js",
   "module": "dist/xethya.item.es.js",
   "iife": "dist/xethya.item.iife.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/xethya/framework",
   "author": "Joel A. Villarreal Bertoldi",
   "license": "MIT",
