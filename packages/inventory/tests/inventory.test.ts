@@ -1,5 +1,5 @@
+import { Item } from "@xethya/item";
 import { Inventory, INVENTORY_DEFAULT_CAPACITY } from "../src/inventory";
-import { Item } from "../src/item";
 
 describe("Inventory", () => {
   describe("Basic instantiation", () => {
