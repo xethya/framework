@@ -2,8 +2,6 @@
 
 # Xethya
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/xethya/framework.svg)](https://greenkeeper.io/)
-
 A role-playing game mechanics framework, built in TypeScript.
 <br>
 <br>
